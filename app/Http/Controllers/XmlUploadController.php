@@ -11,6 +11,28 @@ use SimpleXMLElement;
 
 class XmlUploadController extends Controller
 {
+    public function index()
+    {
+        $importedData = UserData::all(); // Fetch all imported records
+        return view('welcome', compact('importedData'));
+    }
+    public function edit($id)
+    {
+        $data = UserData::findOrFail($id);
+        return view('edit', compact('data'));
+    }
+    public function update(Request $request, $id)
+    {
+        $data = UserData::findOrFail($id);
+        $data->update($request->all());
+
+        return redirect()->route('index')->with('success', 'Data Updated Successfully!');
+    }
+    public function destroy($id)
+    {
+        UserData::destroy($id);
+        return redirect()->route('index')->with('success', 'Data Deleted Successfully!');
+    }
     public function showForm()
     {
         return view('upload');
