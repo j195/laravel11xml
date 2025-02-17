@@ -1,3 +1,8 @@
+Versions Used:
+Laravel: 11.42.1
+PHP: 8.2
+Composer: 2.8.5
+
 URL: http://localhost:8000/upload
 
 -> this is the URL where you can upload the XML file for the data
